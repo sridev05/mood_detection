@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Detection App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-smile"></i> Mood Detection</h1>
+            <p>Real-time emotion detection using AI</p>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="camera">
+                        <i class="fas fa-camera"></i> Camera
+                    </button>
+                    <button class="tab-btn" data-tab="upload">
+                        <i class="fas fa-upload"></i> Upload
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Camera Tab -->
+                    <div class="tab-panel active" id="camera-tab">
+                        <div class="camera-container">
+                            <video id="video" autoplay muted playsinline></video>
+                            <canvas id="canvas" style="display: none;"></canvas>
+                            <div class="camera-overlay">
+                                <div class="face-guide">
+                                    <div class="guide-text">Position your face here</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="camera-controls">
+                            <button id="start-camera" class="btn btn-primary">
+                                <i class="fas fa-video"></i> Start Camera
+                            </button>
+                            <button id="capture" class="btn btn-secondary" disabled>
+                                <i class="fas fa-camera"></i> Capture
+                            </button>
+                            <button id="stop-camera" class="btn btn-danger" disabled>
+                                <i class="fas fa-stop"></i> Stop Camera
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Upload Tab -->
+                    <div class="tab-panel" id="upload-tab">
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-content">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <h3>Drop your image here</h3>
+                                <p>or click to browse</p>
+                                <input type="file" id="file-input" accept="image/*" hidden>
+                            </div>
+                        </div>
+                        <div class="uploaded-image" id="uploaded-image" style="display: none;">
+                            <img id="preview-image" alt="Uploaded image">
+                            <br>
+                            <button class="btn btn-primary" id="analyze-upload">
+                                <i class="fas fa-brain"></i> Analyze Emotion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="captured-image" id="captured-image" style="display: none;">
+                    <h3>Captured Image</h3>
+                    <img id="captured-preview" alt="Captured image">
+                </div>
+
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing emotions...</p>
+                </div>
+
+                <div class="error-message" id="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="error-text"></span>
+                </div>
+
+                <div class="emotion-results" id="emotion-results" style="display: none;">
+                    <h3>Detected Emotions</h3>
+                    <div class="primary-emotion">
+                        <div class="emotion-icon" id="primary-emotion-icon"></div>
+                        <div class="emotion-details">
+                            <h4 id="primary-emotion-name">Happy</h4>
+                            <div class="confidence-score">
+                                <span id="primary-emotion-confidence">85%</span>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="primary-confidence-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="all-emotions" id="all-emotions">
+                        <!-- Emotion bars will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="model-info">
+                <button class="btn btn-link" id="model-info-btn">
+                    <i class="fas fa-info-circle"></i> Model Info
+                </button>
+                <button class="btn btn-link" id="health-check-btn">
+                    <i class="fas fa-heartbeat"></i> Health Check
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for info -->
+    <div class="modal" id="info-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Information</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be dynamically inserted -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
