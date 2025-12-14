@@ -51,6 +51,7 @@ class GenericONNXModel:
                 "percentage": f"{score * 100:.2f}%"
             })
 
+        
         results.sort(key=lambda x: x["confidence"], reverse=True)
         return results
 
