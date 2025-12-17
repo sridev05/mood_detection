@@ -1,7 +1,6 @@
 # 🎭 Mood Detection
 
 A **web-based AI application** that detects human emotions from facial expressions using a **deep learning ONNX model** with a **FastAPI backend** and a **responsive frontend** built using HTML, CSS, and JavaScript.
-
 Users can upload or capture an image, and the app predicts the mood or emotion such as **happy**, **sad**, **angry**, **surprised**, or **neutral**.
 
 ---
@@ -32,5 +31,6 @@ Users can upload or capture an image, and the app predicts the mood or emotion s
 ## 🌐 Deployment
 This project is deployed using **Hugging Face Spaces**.  
 It uses **FastAPI** as the backend service and serves the frontend from the `static/` directory.
+
 
 
