@@ -1,9 +1,11 @@
+
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from PIL import Image
 import base64, io, os
+
 
 from models.emotion_model import GenericONNXModel
 from utils.image_processing import preprocess_image
