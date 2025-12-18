@@ -71,6 +71,7 @@ async def health_check():
         "model_loaded": model is not None
     }
 
+
 @app.get("/model-info")
 async def model_info():
     if model is None:
